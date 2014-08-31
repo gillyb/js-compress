@@ -26,15 +26,15 @@ filesToCompress.forEach(function(filename) {
 		if (err) console.log(err); // TODO: do something useful with this!
 
 		console.log('starting to compress file: ' + filename);
-		var promise = yuiCompressor.compressJs(data);
+		//console.log('data : ' + data);
+		var promise = yuiCompressor.compressJs(filename);
 		compressionPromises.push(promise);
 	});
 });
 
-q.all(compressionPromises).then(function() {
+q.allSettled(compressionPromises).then(function(results) {
 	console.log('\nfinished compressing');
-	console.log(JSON.stringify(args));
+	console.log(results);
+
+	console.log('\n\nmy work here is done... :) ');
 });
-
-console.log('\n\nmy work here is done... :) ');
-

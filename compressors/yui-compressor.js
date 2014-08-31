@@ -13,7 +13,7 @@ module.exports = {
 		},
 		function (err, data, extra) {
 			deferred.resolve(data);
-		}
+		});
 		return deferred.promise;
 	},
 	compressCss: function(css) {
@@ -24,7 +24,7 @@ module.exports = {
 		},
 		function (err, data, extra) {
 			deferred.resolve(data);
-		}
+		});
 		return deferred.promise;
 	}
 

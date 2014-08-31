@@ -2,7 +2,7 @@
 var compressor = require('yuicompressor');
 var q = require('q');
 
-var YuiCompressor = {
+module.exports = {
 
 	compressJs: function(js) {
 		var deferred = q.defer();

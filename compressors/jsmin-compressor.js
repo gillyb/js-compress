@@ -2,7 +2,7 @@
 var jsmin = require('jsmin').jsmin;
 var q = require('q');
 
-var JsMinCompressor = {
+module.exports = {
 	
 	compressJs: function(js) {
 		var deferred = q.defer();

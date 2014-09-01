@@ -2,39 +2,57 @@
 var yuiCompressor = require('./compressors/yui-compressor.js');
 var jsMinCompressor = require('./compressors/jsmin-compressor.js');
 
-var fs = require('fs');
 var q = require('q');
 
-var compressors = [
-	yuiCompressor,
-	jsMinCompressor
-];
+module.exports = {
 
-var filesToCompress = [
-	'D:\\dev\\js-compress\\test\\ajax.js',
-	'D:\\dev\\js-compress\\test\\core.js',
-	'D:\\dev\\js-compress\\test\\event.js'
-];
+	// data : the string of js to compress. This can also be an array of multiple strings
+	// compressors : an array of compressors to use
+	// returns an object with the compressed data including metadata.
+	// [{
+	// 	compressor: 'yui',
+	// 	prev_data_size: 132001,
+	// 	new_data_size: 14302,
+	// 	compressed: '<js compressed>'
+	// }, {...}]
+	compressJs: function(data, compressors) {
+		var deferred = q.defer();
 
+		if (typeof data == 'string')
+			data = [data];
+		if (Object.prototype.toString.call(compressors) != '[object Array]')
+			compressors = [compressors];
 
+		var bigPromises = [];
+		var compressedData = [];
+		compressors.forEach(function(compressor) {
 
-console.log('reading files');
+			var promises = [];
+			var originalJsSize = 0;
 
-var compressionPromises = [];
-filesToCompress.forEach(function(filename) {
-	fs.readFile(filename, function(err, data) {
-		if (err) console.log(err); // TODO: do something useful with this!
+			data.forEach(function(jsString) {
+				var compressing = compressor['compressJs'].apply(this, [jsString]);
+				promises.push(compressing);
+				originalJsSize += jsString.length;
+			});
 
-		console.log('starting to compress file: ' + filename);
-		//console.log('data : ' + data);
-		var promise = yuiCompressor.compressJs(filename);
-		compressionPromises.push(promise);
-	});
-});
+			var bigPromise = q.all(promises).then(function(results) {
+				var jsCombined = results.join();
+				compressedData.push({
+					compressor: compressor.name,
+					prev_data_size: originalJsSize,
+					new_data_size: jsCombined.length,
+					compressed: jsCombined
+				});
+			});
+			bigPromises.push(bigPromise);
 
-q.allSettled(compressionPromises).then(function(results) {
-	console.log('\nfinished compressing');
-	console.log(results);
+		});
 
-	console.log('\n\nmy work here is done... :) ');
-});
+		q.all(bigPromises).then(function(){
+			deferred.resolve(compressedData);
+		});
+
+		return deferred.promise;
+	}
+};

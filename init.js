@@ -3,12 +3,12 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 
-var app = express();
+app = express();
 var __port__ = 9090;
 
 
 // configuration
-app.use(bodyParser());
+app.use(bodyParser.json());
 app.use(methodOverride('_method'));
 
 app.use(express.static(__dirname + '/scripts'));

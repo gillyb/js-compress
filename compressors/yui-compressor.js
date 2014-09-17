@@ -5,7 +5,7 @@ var q = require('q');
 module.exports = {
 
 	name: 'YUI Compressor',
-	
+
 	compressJs: function(js) {
 		var deferred = q.defer();
 		compressor.compress(js, {

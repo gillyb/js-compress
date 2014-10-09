@@ -1,25 +1,25 @@
 
 var holder = document.getElementById('holder'),
-    tests = {
+    tests = { // check for compatibility
       filereader: typeof FileReader != 'undefined',
       dnd: 'draggable' in document.createElement('span'),
       formdata: !!window.FormData,
       progress: "upload" in new XMLHttpRequest
     },
-    support = {
+    support = { // check support for certain html5 elements
       filereader: document.getElementById('filereader'),
       formdata: document.getElementById('formdata'),
       progress: document.getElementById('progress')
     },
-    acceptedTypes = {
-      'image/png': true,
+    acceptedTypes = { // types we can accept
+      'image/png': true, // TODO: change this to js/css only!
       'image/jpeg': true,
       'image/gif': true
     },
     progress = document.getElementById('uploadprogress'),
     fileupload = document.getElementById('upload');
 
-"filereader formdata progress".split(' ').forEach(function (api) {
+['filereader', 'formdata', 'progress'].forEach(function (api) {
   if (tests[api] === false) {
     support[api].className = 'fail';
   } else {
@@ -49,7 +49,6 @@ function previewfile(file) {
 }
 
 function readfiles(files) {
-    debugger;
     var formData = tests.formdata ? new FormData() : null;
     for (var i = 0; i < files.length; i++) {
       if (tests.formdata) formData.append('file', files[i]);
@@ -59,7 +58,7 @@ function readfiles(files) {
     // now post a new XHR request
     if (tests.formdata) {
       var xhr = new XMLHttpRequest();
-      xhr.open('POST', '/devnull.php');
+      xhr.open('POST', '/upload');
       xhr.onload = function() {
         progress.value = progress.innerHTML = 100;
       };

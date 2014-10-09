@@ -9,6 +9,7 @@ var __port__ = 9090;
 
 // configuration
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:false}));
 app.use(methodOverride('_method'));
 
 app.use(express.static(__dirname + '/scripts'));

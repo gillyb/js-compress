@@ -1,4 +1,11 @@
 
 #main { width:1000px; margin:0 auto; }
 
+.hidden { display:none; }
+.invisible { visibility: hidden; }
+
+.nav-tabs { margin-bottom:15px; }
+.nav-tabs .actions { margin-top:15px; }
+
 .drag-files-container { height:200px; border:solid 2px #888; }
+textarea.js-input { width:100%; height:250px; }

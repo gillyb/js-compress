@@ -1,4 +1,7 @@
 
+var util = require('util');
+var multiparty = require('multiparty');
+
 var yuiCompressor = require('../compressors/yui-compressor.js');
 var jsMinCompressor = require('../compressors/jsmin-compressor.js');
 
@@ -9,14 +12,18 @@ app.get('/', function(req, res) {
 });
 
 app.post('/compress-text', function(req, res) {
-	var jsText = req.body['jsText'];
 
-	console.log(jsText);
-	jsCompressor.compressJs(jsText, yuiCompressor)
-		.then(function(compressedData) {
-			console.log(JSON.stringify(compressedData));
+	var form = new multiparty.Form();
+	form.parse(req, function(err, fields, files) {
+
+		var jsInput = fields['jsInput'];
+
+		jsCompressor.compressJs(jsInput, yuiCompressor).then(function(compressedData) {
 			res.json(compressedData);
 		});
+
+	});
+
 });
 
 app.post('/upload', function(req, res) {

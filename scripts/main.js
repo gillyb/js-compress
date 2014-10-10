@@ -22,17 +22,19 @@ $(function() {
 	});
 
 	compressTextButton.click(function() {
-		var jsText = $('textarea.js-input').val();
+		var formData = new FormData();
+		formData.append('jsInput', $('#js-input').val());
+
 		$.ajax({
-			type: 'post',
 			url: '/compress-text',
-			data: {
-				jsText: jsText
-			}
-		}).success(function(compressedObj) {
-			alert(compressedObj);
-		}).error(function(e){
-			alert(JSON.stringify(e));
+			type: 'POST',
+			data: formData,
+			contentType: false,
+			processData: false
+		}).success(function(res) {
+			alert(res);
+		}).error(function(e) {
+			alert(e);
 		});
 	});
 

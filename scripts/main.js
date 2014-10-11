@@ -32,6 +32,7 @@ $(function() {
 	function compressJsText() {
 		var formData = new FormData();
 		formData.append('jsInput', $('#js-input').val());
+		formData.append('jsCompressor', $('input[name=compressor-type]:checked').val());
 
 		$.ajax({
 			url: '/compress-text',

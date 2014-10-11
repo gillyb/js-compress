@@ -1,4 +1,5 @@
 
+var arrayUtils = require('../scripts/array-utils.js');
 var util = require('util');
 var multiparty = require('multiparty');
 
@@ -16,6 +17,16 @@ app.post('/compress-text', function(req, res) {
 	var form = new multiparty.Form();
 	form.parse(req, function(err, fields, files) {
 
+		console.log('fields : ' + JSON.stringify(fields['jsCompressor']));
+
+		var chosenCompressor = undefined;
+		if (fields['jsCompressor'][0] == 'yui-compressor')
+			chosenCompressor = yuiCompressor;
+		else if (fields['jsCompressor'][0] == 'jsmin-compressor')
+			chosenCompressor = jsMinCompressor;
+		else if (fields['jsCompressor'][0] == 'all-compressor')
+			chosenCompressor = [yuiCompressor, jsMinCompressor];
+
 		if (err) {
 			// TODO: give user some feedback...
 			console.log('Error...\n' + JSON.stringify(err));
@@ -23,7 +34,7 @@ app.post('/compress-text', function(req, res) {
 
 		var jsInput = fields['jsInput'];
 
-		jsCompressor.compressJs(jsInput, yuiCompressor).then(function(compressedData) {
+		jsCompressor.compressJs(jsInput, chosenCompressor).then(function(compressedData) {
 			res.json(compressedData);
 		});
 

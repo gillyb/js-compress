@@ -36,7 +36,15 @@ block body
 			div.actions
 				div
 					span Choose a compressor :
-					input.compressor-yui
+					span.compressor-choice
+						input#compressor-yui.compressor-yui(type='radio', name='compressor-type', value='yui-compressor')
+						label(for='compressor-yui') YUI Compressor
+					span.compressor-choice
+						input#compressor-jsmin.compressor-jsmin(type='radio', name='compressor-type', value='jsmin-compressor')
+						label(for='compressor-jsmin') JSMin
+					span.compressor-choice
+						input#compressor-all.compressor-all(type='radio', name='compressor-type', value='all-compressor')
+						label(for='compressor-all') Check them all!
 				button#compress-js-button.btn.btn-primary(type='submit') COMPRESS JS
 
 			div.explanation.

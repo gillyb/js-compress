@@ -5,7 +5,8 @@ $(function() {
 		textTab = $('.text-tab'),
 		textTabContainer = $('.text-tab-container'),
 		filesTabContainer = $('.files-tab-container'),
-		compressButton = $('#compress-js-button');
+		compressButton = $('#compress-js-button'),
+		outputDetails = $('.output-details');
 
 	var compressText = textTab.hasClass('active');
 
@@ -41,7 +42,9 @@ $(function() {
 			contentType: false,
 			processData: false
 		}).success(function(res) {
-			alert(res);
+			//res.compressor, res.prev_data_size, res.new_data_size
+			outputDetails.append(createResultTemplate(res[0].compresser, res[0].prev_data_size, res[0].new_data_size));
+			$('#js-input').val(res[0].compressed);
 		}).error(function(e) {
 			alert(e);
 		});
@@ -49,6 +52,20 @@ $(function() {
 
 	function compressJsFiles() {
 
+	}
+
+	function createResultTemplate(compressor, prev_size, new_size) {
+		function createFieldValue(field, value) {
+			var f = $('<span/>').addClass('label').html(field);
+			var v = $('<span/>').addClass('value').html(value);
+			return $('<div/>').append(f).append(v);
+		}
+
+		var wrappingDiv = $('<div/>').addClass('output-result');
+		wrappingDiv.append(createFieldValue('original size : ', prev_size));
+		wrappingDiv.append(createFieldValue('compressed size : ', new_size));
+
+		return wrappingDiv;
 	}
 
 });

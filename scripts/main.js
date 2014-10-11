@@ -5,8 +5,9 @@ $(function() {
 		textTab = $('.text-tab'),
 		textTabContainer = $('.text-tab-container'),
 		filesTabContainer = $('.files-tab-container'),
-		compressTextButton = $('#compress-text'),
-		compressFilesButton = $('#compress-files');
+		compressButton = $('#compress-js-button');
+
+	var compressText = textTab.hasClass('active');
 
 	$('.files-tab').click(function() {
 		textTabContainer.addClass('hidden');
@@ -21,7 +22,14 @@ $(function() {
 		textTab.addClass('active');
 	});
 
-	compressTextButton.click(function() {
+	compressButton.click(function() {
+		if (compressText)
+			compressJsText();
+		else
+			compressJsFiles();
+	});
+
+	function compressJsText() {
 		var formData = new FormData();
 		formData.append('jsInput', $('#js-input').val());
 
@@ -36,10 +44,10 @@ $(function() {
 		}).error(function(e) {
 			alert(e);
 		});
-	});
+	}
 
-	compressFilesButton.click(function() {
+	function compressJsFiles() {
 
-	});
+	}
 
 });

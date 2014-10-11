@@ -30,13 +30,14 @@ block body
 						| Upload progress:
 						progress#uploadprogress(min='0', max='100', value='0') 0
 
-				div.actions
-					button#compress-files.btn.btn-primary(type='button') COMPRESS JS
-
 			div.text-tab-container
 				textarea#js-input.js-input(name='js-input', placeholder='Paste your javascript code here...')
-				div.actions
-					button#compress-text.btn.btn-primary(type='submit') COMPRESS JS
+
+			div.actions
+				div
+					span Choose a compressor :
+					input.compressor-yui
+				button#compress-js-button.btn.btn-primary(type='submit') COMPRESS JS
 
 			div.explanation.
 				Here will be a thorough explanation of how to use this system

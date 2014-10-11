@@ -16,6 +16,11 @@ app.post('/compress-text', function(req, res) {
 	var form = new multiparty.Form();
 	form.parse(req, function(err, fields, files) {
 
+		if (err) {
+			// TODO: give user some feedback...
+			console.log('Error...\n' + JSON.stringify(err));
+		}
+
 		var jsInput = fields['jsInput'];
 
 		jsCompressor.compressJs(jsInput, yuiCompressor).then(function(compressedData) {

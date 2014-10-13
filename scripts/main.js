@@ -12,7 +12,7 @@ $(function() {
 
     $('.files-tab').click(function() {
         textTabContainer.addClass('hidden');
-        textTab.removClass('active');
+        textTab.removeClass('active');
         filesTabContainer.removeClass('hidden');
         filesTab.addClass('active');
     });

@@ -7,7 +7,28 @@
 .nav-tabs { margin-bottom:15px; }
 .nav-tabs .actions { margin-top:15px; }
 
-.drag-files-container { height:200px; border:solid 2px #888; }
+.drag-files-container {
+    height:250px; width:840px;
+    margin-right:10px; border:solid 2px #a8a8a8;
+    display:inline-block; position:relative;
+}
+.drag-files-container .status-bar {
+    position:absolute; bottom:0; width:100%;
+    border-top:solid 1px #a8a8a8;
+    background-color:#efefef;
+    height:40px; padding:0 10px;
+}
+.drag-files-container .status-bar .progress-container {
+    display:inline-block; height:30px; padding-top:10px;
+}
+.drag-files-container span.placeholder {
+    width:100%; margin-top:80px;
+    text-align:center; display:inline-block;
+    color:#d8d8d8; font-size:36px;
+    font-weight:bold;
+}
+
+
 textarea.js-input { width:840px; height:250px; margin-right:10px; }
 
 div.output-details { display:inline-block; width:290px; height:250px; background-color:#efefef; vertical-align:top; padding:10px; }

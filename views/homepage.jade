@@ -18,6 +18,7 @@ block body
 
 			div.files-tab-container.hidden
 				div.drag-files-container#holder
+					span.placeholder Drag files here to upload...
 					p#upload.hidden
 						label
 							| Drag & drop not supported, but you can still upload via this input field:
@@ -26,9 +27,13 @@ block body
 					p#filereader File API & FileReader API not supported
 					p#formdata XHR2's FormData is not supported
 					p#progress XHR2's upload progress isn't supported
-					p
-						| Upload progress:
-						progress#uploadprogress(min='0', max='100', value='0') 0
+					div.status-bar
+						div.progress-container
+							| Upload progress:
+							progress#uploadprogress(min='0', max='100', value='0') 0
+				div.output-details
+					div.title Output Details
+					div.output
 
 			div.text-tab-container
 				textarea#js-input.js-input(name='js-input', placeholder='Paste your javascript code here...')

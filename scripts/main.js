@@ -6,7 +6,7 @@ $(function() {
         textTabContainer = $('.text-tab-container'),
         filesTabContainer = $('.files-tab-container'),
         compressButton = $('#compress-js-button'),
-        outputDetails = $('.output-details');
+        outputDetails = $('.output-details .output');
 
     var compressText = textTab.hasClass('active');
 
@@ -43,10 +43,19 @@ $(function() {
             processData: false
         }).success(function(res) {
             //res.compressor, res.prev_data_size, res.new_data_size
+
+            outputDetails.html('');
+
+            var originalFileSize = res[0].prev_data_size.withCommas() + 'bytes';
+            var originalSizeDiv = $('<div/>')
+                .addClass('original-size')
+                .html('Original file size : ' + originalFileSize);
+            outputDetails.append(originalSizeDiv);
+
             var mostCompressed = 0;
             var smallest = res[0].prev_data_size;
             for (var i=0; i<res.length; i++) {
-                outputDetails.append(createResultTemplate(res[0].compressor, res[0].prev_data_size, res[0].new_data_size));
+                outputDetails.append(createResultTemplate(res[i].compressor, res[i].prev_data_size, res[i].new_data_size));
                 if (res[0].new_data_size < smallest) {
                     smallest = res[0].new_data_size;
                     mostCompressed = i;
@@ -63,17 +72,17 @@ $(function() {
 
     }
 
-    function createResultTemplate(compressor, prev_size, new_size) {
-        function createFieldValue(field, value) {
-            var f = $('<span/>').addClass('label').html(field);
-            var v = $('<span/>').addClass('value').html(value);
-            return $('<div/>').append(f).append(v);
-        }
+    function createResultTemplate(compressor, original_size, new_size) {
 
         var wrappingDiv = $('<div/>').addClass('output-result');
-        wrappingDiv.append($('<div/>').addClass('compressor').html(compressor));
-        wrappingDiv.append(createFieldValue('original size : ', prev_size));
-        wrappingDiv.append(createFieldValue('compressed size : ', new_size));
+
+        var compressedSize = new_size.withCommas();
+        var compressedPercent = parseInt(((original_size - new_size) / original_size) * 100);
+
+        wrappingDiv.append($('<span/>').addClass('compressor').html(compressor + ' : '));
+        wrappingDiv.append($('<span/>')
+            .addClass('new-size')
+            .html(compressedSize + ' (' + compressedPercent + '%)'));
 
         return wrappingDiv;
     }

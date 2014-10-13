@@ -43,8 +43,8 @@ $(function() {
 			processData: false
 		}).success(function(res) {
 			//res.compressor, res.prev_data_size, res.new_data_size
-			outputDetails.append(createResultTemplate(res[0].compresser, res[0].prev_data_size, res[0].new_data_size));
-			$('#js-input').val(res[0].compressed);
+			outputDetails.append(createResultTemplate(res[0].compressor, res[0].prev_data_size, res[0].new_data_size));
+			$('#js-input').val(res[0].compressed);œ
 		}).error(function(e) {
 			alert(e);
 		});
@@ -62,6 +62,7 @@ $(function() {
 		}
 
 		var wrappingDiv = $('<div/>').addClass('output-result');
+		wrappingDiv.append(createFieldValue('Compressor : ', compressor));
 		wrappingDiv.append(createFieldValue('original size : ', prev_size));
 		wrappingDiv.append(createFieldValue('compressed size : ', new_size));
 

@@ -10,4 +10,7 @@
 .drag-files-container { height:200px; border:solid 2px #888; }
 textarea.js-input { width:840px; height:250px; margin-right:10px; }
 
-div.output-details { display:inline-block; width:290px; height:250px; background-color:#efefef; vertical-align:top; }
+div.output-details { display:inline-block; width:290px; height:250px; background-color:#efefef; vertical-align:top; padding:10px; }
+div.output-details .title { color:#428bca; font-weight:bold; font-size:16px; border-bottom:solid 1px #428bca; }
+div.output-details .label { padding:0; color:#000; font-weight:bold; font-size:12px; }
+div.output-details .value { color:#000; font-size:12px; }

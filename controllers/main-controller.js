@@ -35,6 +35,7 @@ app.post('/compress-text', function(req, res) {
 		var jsInput = fields['jsInput'];
 
 		jsCompressor.compressJs(jsInput, chosenCompressor).then(function(compressedData) {
+			console.log(JSON.stringify(compressedData));
 			res.json(compressedData);
 		});
 

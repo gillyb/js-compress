@@ -27,6 +27,7 @@
     color:#d8d8d8; font-size:36px;
     font-weight:bold;
 }
+.drag-files-container span.placeholder .small { font-size:14px; font-weight:normal; }
 
 
 textarea.js-input { width:840px; height:250px; margin-right:10px; }

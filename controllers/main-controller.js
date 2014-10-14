@@ -62,17 +62,22 @@ app.post('/upload', function(req, res) {
                 fs.mkdirSync(dirName);
 
             // copy the file
-            var tempFilePath = files.file[0].path;
-            fs.createReadStream(tempFilePath)
-                .pipe(fs.createWriteStream(dirName + '/gilly.js')
-                    .on('close', function(err) {
-                        if (err) console.log('error : ' + err);
-                        console.log('file copied');
-                        fs.unlink(tempFilePath, function(err) {
-                            if (err) console.log('error deleting file : ' + err);
-                            console.log('file deleted');
-                        });
-                    }));
+            for (var i=0; i<files.file.length; i++) {
+                var tempFilePath = files.file[i].path;
+                var originalFilename = files.file[i].originalFilename;
+
+                fs.createReadStream(tempFilePath)
+                    .pipe(fs.createWriteStream(dirName + '/' + originalFilename)
+                        .on('close', function(err) {
+                            if (err) console.log('error : ' + err);
+                            console.log('file copied');
+                            fs.unlink(tempFilePath, function(err) {
+                                if (err) console.log('error deleting file : ' + err);
+                                console.log('file deleted');
+                            });
+                        }));
+            }
+
         });
     });
 });

@@ -1,4 +1,5 @@
 
+var fs = require('fs');
 var arrayUtils = require('../scripts/array-utils.js');
 var util = require('util');
 var multiparty = require('multiparty');
@@ -46,11 +47,20 @@ app.post('/compress-text', function(req, res) {
 });
 
 app.post('/upload', function(req, res) {
-	// do nothing for now...
-	// TODO: save file on server and minify...
-	// TODO: make sure we delete file after usage...
+    var form = new multiparty.Form();
+    form.parse(req, function(err, fields, files) {
+        if (err) // TODO: take better care of error and notify user
+            console.log('Error occurred : \n' + err);
 
+        console.log('fields : ' + JSON.stringify(fields));
+        console.log('files : ' + JSON.stringify(files));
 
-
-	res.end();
+        var date = new Date();
+        var dirName = '' + date.getFullYear() + '' + (date.getMonth()+1) + '' + date.getDate() + '_' + fields['page-hash'];
+        fs.exists(dirName, function(dirExists) {
+            if (!dirExists)
+                fs.mkdirSync(dirName);
+            // TODO: create the file in the new directory
+        });
+    });
 });

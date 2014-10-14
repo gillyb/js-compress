@@ -70,6 +70,7 @@ function readfiles(files) {
 
     // now post a new XHR request
     if (tests.formdata) {
+
         var xhr = new XMLHttpRequest();
         xhr.open('POST', '/upload');
         xhr.onload = function () {
@@ -84,6 +85,9 @@ function readfiles(files) {
                 }
             }
         }
+
+        // add the page specific hash to the request
+        formData.append('page-hash', $('#page-hash').attr('value'));
 
         xhr.send(formData);
     }

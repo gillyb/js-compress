@@ -28,7 +28,9 @@
     font-weight:bold;
 }
 .drag-files-container span.placeholder .small { font-size:14px; font-weight:normal; }
-
+.drag-files-container .file-container { position:relative; background-image:url('js-file.png'); background-size:75px; background-repeat:no-repeat; width:100px; height:100px; display:inline-block; margin:16px; }
+.drag-files-container .filename { position:absolute; width:100%; bottom:0; font-size:12px; }
+.drag-files-container .delete { position:absolute; top:0; right:0; cursor:pointer; background-color:red; padding:3px; border-radius:10px; color:#fff; font-weight:bold; font-size:11px; width:18px; text-align:center; }
 
 textarea.js-input { width:840px; height:250px; margin-right:10px; }
 

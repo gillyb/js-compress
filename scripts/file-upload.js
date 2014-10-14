@@ -28,14 +28,28 @@ var holder = $('#holder'),
 });
 
 function previewfile(file) {
-    if (tests.filereader === true && acceptedTypes[file.type] === true) {
+    if (tests.filereader === true) {
+
+        $('#holder .placeholder').remove();
+
         var reader = new FileReader();
-        reader.onload = function (event) {
-            var image = new Image();
-            image.src = event.target.result;
-            image.width = 250; // a fake resize
-            holder.append(image);
-        };
+
+        (function(filename) {
+            reader.onload = function (e) {
+                var fileContainer = $('<div/>').addClass('file-container');
+                var fileName = $('<span/>')
+                    .addClass('filename')
+                    .html(filename.truncateFilename());
+
+                var delButton = $('<span/>').addClass('delete').html('X');
+
+                fileContainer
+                    .append(fileName)
+                    .append(delButton);
+
+                holder.append(fileContainer);
+            };
+        })(file.name);
 
         reader.readAsDataURL(file);
     } else {
@@ -45,9 +59,12 @@ function previewfile(file) {
 }
 
 function readfiles(files) {
+    // TODO: make sure files are only *.js
+
     var formData = tests.formdata ? new FormData() : null;
     for (var i = 0; i < files.length; i++) {
-        if (tests.formdata) formData.append('file', files[i]);
+        if (tests.formdata)
+            formData.append('file', files[i]);
         previewfile(files[i]);
     }
 
@@ -85,6 +102,7 @@ if (tests.dnd) {
         $(this).removeClass('hover');
         e.preventDefault();
         e.stopPropagation();
+
         readfiles(e.originalEvent.dataTransfer.files);
     });
 }

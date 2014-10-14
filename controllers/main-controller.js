@@ -60,7 +60,19 @@ app.post('/upload', function(req, res) {
         fs.exists(dirName, function(dirExists) {
             if (!dirExists)
                 fs.mkdirSync(dirName);
-            // TODO: create the file in the new directory
+
+            // copy the file
+            var tempFilePath = files.file[0].path;
+            fs.createReadStream(tempFilePath)
+                .pipe(fs.createWriteStream(dirName + '/gilly.js')
+                    .on('close', function(err) {
+                        if (err) console.log('error : ' + err);
+                        console.log('file copied');
+                        fs.unlink(tempFilePath, function(err) {
+                            if (err) console.log('error deleting file : ' + err);
+                            console.log('file deleted');
+                        });
+                    }));
         });
     });
 });

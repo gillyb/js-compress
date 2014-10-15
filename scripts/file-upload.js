@@ -39,6 +39,7 @@ function previewfile(file) {
                 var fileContainer = $('<div/>').addClass('file-container');
                 var fileName = $('<span/>')
                     .addClass('filename')
+                    .data('full-name', filename)
                     .html(filename.truncateFilename());
 
                 var delButton = $('<span/>').addClass('delete').html('X');

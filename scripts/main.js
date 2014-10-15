@@ -69,7 +69,19 @@ $(function() {
     }
 
     function compressJsFiles() {
+        var jsFiles = [];
+        fileTabContainer.find('.file-container .filename').each(function(file) {
+            jsFiles.push(file.data('full-name'));
+        });
 
+        $.ajax({
+            type: 'POST',
+            url: '/compress-files',
+            data: {
+                jsCompressor: $('input[name=compressor-type]:checked').val(),
+                jsFiles: jsFiles
+            }
+        });
     }
 
     function createResultTemplate(compressor, original_size, new_size) {

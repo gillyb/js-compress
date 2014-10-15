@@ -51,6 +51,9 @@ app.post('/upload', function(req, res) {
 
         var dirName = _getDirName(fields['page-hash']);
         if (!fs.existsSync(dirName)) {
+            var dateDir = dirName.split('/')[0];
+            if (!fs.existsSync(dateDir))
+                fs.mkdirSync(dateDir);
             fs.mkdirSync(dirName);
         }
 

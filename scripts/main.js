@@ -8,8 +8,6 @@ $(function() {
         compressButton = $('#compress-js-button'),
         outputDetails = $('.output-details .output');
 
-    var compressText = textTab.hasClass('active');
-
     $('.files-tab').click(function() {
         textTabContainer.addClass('hidden');
         textTab.removeClass('active');
@@ -24,7 +22,7 @@ $(function() {
     });
 
     compressButton.click(function() {
-        if (compressText)
+        if (textTab.hasClass('active'))
             compressJsText();
         else
             compressJsFiles();
@@ -70,16 +68,17 @@ $(function() {
 
     function compressJsFiles() {
         var jsFiles = [];
-        fileTabContainer.find('.file-container .filename').each(function(file) {
-            jsFiles.push(file.data('full-name'));
+        filesTabContainer.find('.file-container .filename').each(function() {
+            jsFiles.push($(this).data('full-name'));
         });
 
         $.ajax({
             type: 'POST',
             url: '/compress-files',
             data: {
+                pageHash: $('#page-hash').attr('value'),
                 jsCompressor: $('input[name=compressor-type]:checked').val(),
-                jsFiles: jsFiles
+                jsFiles: JSON.stringify(jsFiles)
             }
         });
     }

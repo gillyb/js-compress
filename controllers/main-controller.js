@@ -22,7 +22,7 @@ app.post('/compress-text', function(req, res) {
 
         console.log('fields : ' + JSON.stringify(fields['jsCompressor']));
 
-        var chosenCompressor = _getChosenCompressor(fields['jsCompressor']);
+        var chosenCompressor = _getChosenCompressor(fields['jsCompressor'][0]);
 
         if (err) {
             // TODO: give user some feedback...
@@ -78,45 +78,37 @@ app.post('/upload', function(req, res) {
 });
 
 app.post('/compress-files', function(req, res) {
-    var form = new multiparty.Form();
-    form.parse(req, function(err, fields, files) {
-        if (err) // TODO: take better care of the error and notify user!
-            console.log('Error occurred : \n' + err);
+    var chosenCompressor = _getChosenCompressor(req.param('jsCompressor'));
 
-        console.log('fields : ' + JSON.stringify(fields));
+    var dirName = _getDirName(req.param('pageHash'));
+    var jsFiles = JSON.parse(req.param('jsFiles'));
+    var filesContent = [];
+    var filesReadCount = 0;
 
-        var chosenCompressor = _getChosenCompressor(fields['jsCompressor']);
+    for (var i=0; i<jsFiles.length; i++) {
+        var jsFile = dirName + '/' + jsFiles[i];
+        (function(jsFileName, ix) {
+            fs.exists(jsFileName, function(jsFilesExists) {
+                if (!jsFilesExists)
+                    console.log('Failed to find js file : ' + jsFileName);
 
-        var dirName = _getDirName(fields['page-hash']);
-        var jsFiles = fields['js-files'];
-        var filesContent = [];
-        var filesReadCount = 0;
+                fs.readFile(jsFileName, function(err, data) {
+                    if (err)
+                        console.log('Error occurred : ' + err);
 
-        for (var i=0; i<jsFiles.length; i++) {
-            var jsFile = dirName + '/' + jsFiles[i];
-            (function(jsFileName, ix) {
-                fs.exists(jsFileName, function(jsFilesExists) {
-                    if (!jsFilesExists)
-                        console.log('Failed to find js file : ' + jsFileName);
+                    filesContent[ix] = data;
 
-                    fs.readFile(jsFileName, function(err, data) {
-                        if (err)
-                            console.log('Error occurred : ' + err);
-
-                        filesContent[ix] = data;
-
-                        filesReadCount++;
-                        if (filesReadCount == jsFiles.length) {
-                            // we read all the files, now compress and return to user
-                            jsCompressor.compressJs(filesContent, chosenCompressor).then(function(compressedJs) {
-                                res.json(compressedJs);
-                            });
-                        }
-                    });
+                    filesReadCount++;
+                    if (filesReadCount == jsFiles.length) {
+                        // we read all the files, now compress and return to user
+                        jsCompressor.compressJs(filesContent, chosenCompressor).then(function(compressedJs) {
+                            res.json(compressedJs);
+                        });
+                    }
                 });
-            })(jsFile, i);
-        }
-    });
+            });
+        })(jsFile, i);
+    }
 });
 
 var _getDirName = function(hash) {
@@ -128,11 +120,11 @@ var _getDirName = function(hash) {
 
 var _getChosenCompressor = function(compressors) {
     var chosenCompressor = undefined;
-    if (compressors[0] == 'yui-compressor')
+    if (compressors == 'yui-compressor')
         chosenCompressor = yuiCompressor;
-    else if (compressors[0] == 'jsmin-compressor')
+    else if (compressors == 'jsmin-compressor')
         chosenCompressor = jsMinCompressor;
-    else if (compressors[0] == 'all-compressor')
+    else if (compressors == 'all-compressor')
         chosenCompressor = [yuiCompressor, jsMinCompressor];
     return chosenCompressor;
 };

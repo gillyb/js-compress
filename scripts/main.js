@@ -42,23 +42,7 @@ $(function() {
         }).success(function(res) {
             //res.compressor, res.prev_data_size, res.new_data_size
 
-            outputDetails.html('');
-
-            var originalFileSize = res[0].prev_data_size.withCommas() + 'bytes';
-            var originalSizeDiv = $('<div/>')
-                .addClass('original-size')
-                .html('Original file size : ' + originalFileSize);
-            outputDetails.append(originalSizeDiv);
-
-            var mostCompressed = 0;
-            var smallest = res[0].prev_data_size;
-            for (var i=0; i<res.length; i++) {
-                outputDetails.append(createResultTemplate(res[i].compressor, res[i].prev_data_size, res[i].new_data_size));
-                if (res[0].new_data_size < smallest) {
-                    smallest = res[0].new_data_size;
-                    mostCompressed = i;
-                }
-            }
+            displayOutputResults(res);
 
             $('#js-input').val(res[mostCompressed].compressed);
         }).error(function(e) {
@@ -80,6 +64,10 @@ $(function() {
                 jsCompressor: $('input[name=compressor-type]:checked').val(),
                 jsFiles: JSON.stringify(jsFiles)
             }
+        }).success(function(res) {
+            displayOutputResults(res);
+        }).error(function(ex) {
+            alert(JSON.stringify(ex));
         });
     }
 
@@ -96,6 +84,26 @@ $(function() {
             .html(compressedSize + ' (' + compressedPercent + '%)'));
 
         return wrappingDiv;
+    }
+
+    function displayOutputResults(outputResponse) {
+        outputDetails.html('');
+
+        var originalFileSize = outputResponse[0].prev_data_size.withCommas() + 'bytes';
+        var originalSizeDiv = $('<div/>')
+            .addClass('original-size')
+            .html('Original file size : ' + originalFileSize);
+        outputDetails.append(originalSizeDiv);
+
+        var mostCompressed = 0;
+        var smallest = outputResponse[0].prev_data_size;
+        for (var i=0; i<outputResponse.length; i++) {
+            outputDetails.append(createResultTemplate(outputResponse[i].compressor, outputResponse[i].prev_data_size, outputResponse[i].new_data_size));
+            if (outputResponse[0].new_data_size < smallest) {
+                smallest = outputResponse[0].new_data_size;
+                mostCompressed = i;
+            }
+        }
     }
 
 });

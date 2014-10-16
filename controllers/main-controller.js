@@ -96,7 +96,7 @@ app.post('/compress-files', function(req, res) {
                     if (err)
                         console.log('Error occurred : ' + err);
 
-                    filesContent[ix] = data;
+                    filesContent[ix] = data.toString();
 
                     filesReadCount++;
                     if (filesReadCount == jsFiles.length) {

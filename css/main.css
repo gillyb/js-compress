@@ -24,6 +24,8 @@
 .drag-files-container .status-bar .progress-container .progress {
     display:inline-block; width:200px; margin-bottom:0; margin-left:10px;
 }
+.drag-files-container .status-bar .files-count-container { display:inline-block; padding-top:10px; }
+
 .drag-files-container span.placeholder {
     width:100%; margin-top:80px;
     text-align:center; display:inline-block;

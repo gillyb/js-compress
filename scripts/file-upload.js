@@ -49,6 +49,8 @@ function previewfile(file) {
                     .append(delButton);
 
                 holder.append(fileContainer);
+
+                $('.status-bar .files-count').html($('#holder .file-container').length);
             };
         })(file.name);
 
@@ -84,7 +86,6 @@ function readfiles(files) {
                     var complete = (event.loaded / event.total * 100 | 0);
                     var progressBar = $('.progress-container .progress .progress-bar');
                     progressBar.css('width', complete + '%');
-                    //progress.value = progress.innerHTML = complete;
                 }
             }
         }

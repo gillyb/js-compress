@@ -82,7 +82,9 @@ function readfiles(files) {
             xhr.upload.onprogress = function (event) {
                 if (event.lengthComputable) {
                     var complete = (event.loaded / event.total * 100 | 0);
-                    progress.value = progress.innerHTML = complete;
+                    var progressBar = $('.progress-container .progress .progress-bar');
+                    progressBar.css('width', complete + '%');
+                    //progress.value = progress.innerHTML = complete;
                 }
             }
         }

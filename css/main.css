@@ -19,7 +19,10 @@
     height:40px; padding:0 10px;
 }
 .drag-files-container .status-bar .progress-container {
-    display:inline-block; height:30px; padding-top:10px;
+    display:inline-block; height:30px; padding-top:10px; width:400px; vertical-align:top;
+}
+.drag-files-container .status-bar .progress-container .progress {
+    display:inline-block; width:200px; margin-bottom:0; margin-left:10px;
 }
 .drag-files-container span.placeholder {
     width:100%; margin-top:80px;

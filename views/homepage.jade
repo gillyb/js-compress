@@ -34,7 +34,9 @@ block body
 					div.status-bar
 						div.progress-container
 							| Upload progress:
-							progress#uploadprogress(min='0', max='100', value='0') 0
+							div.progress
+								div.progress-bar.progress-bar-info(role='progressbar', aria-valuenow='0', aria-valuemin='0', aria-valuemax='100')
+							//progress#uploadprogress(min='0', max='100', value='0') 0
 				div.output-details
 					div.title Output Details
 					div.output

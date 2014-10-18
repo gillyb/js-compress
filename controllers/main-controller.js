@@ -51,7 +51,7 @@ app.post('/upload', function(req, res) {
 
         var dirName = _getDirName(fields['page-hash']);
         if (!fs.existsSync(dirName)) {
-            var dateDir = dirName.split('/')[0];
+            var dateDir = dirName.split('/')[0] + '/' + dirName.split('/')[1];
             if (!fs.existsSync(dateDir))
                 fs.mkdirSync(dateDir);
             fs.mkdirSync(dirName);
@@ -111,9 +111,14 @@ app.post('/compress-files', function(req, res) {
     }
 });
 
+app.get('/output/:date/:hash/:file', function(req, res) {
+    var file = __dirname + '/output/' + req.param('date') + '/' + req.param('hash') + '/' + req.param('file');
+    res.download(file);
+});
+
 var _getDirName = function(hash) {
     var date = new Date();
-    var dirName = '' + date.getFullYear() + '' + (date.getMonth()+1) + '' + date.getDate();
+    var dirName = 'output/' + date.getFullYear() + '' + (date.getMonth()+1) + '' + date.getDate();
     dirName += '/' + hash;
     return dirName;
 };

@@ -37,6 +37,7 @@ module.exports = {
                 var jsCombined = results.join();
                 compressedData.push({
                     compressor: compressor.name,
+                    file: compressor.file,
                     prev_data_size: originalJsSize,
                     new_data_size: jsCombined.length,
                     compressed: jsCombined

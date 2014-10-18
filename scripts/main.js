@@ -65,7 +65,7 @@ $(function() {
                 jsFiles: JSON.stringify(jsFiles)
             }
         }).success(function(res) {
-            displayOutputResults(res);
+            displayOutputResults(res, true);
         }).error(function(ex) {
             alert(JSON.stringify(ex));
         });
@@ -86,7 +86,7 @@ $(function() {
         return wrappingDiv;
     }
 
-    function displayOutputResults(outputResponse) {
+    function displayOutputResults(outputResponse, isFiles) {
         outputDetails.html('');
 
         var originalFileSize = outputResponse[0].prev_data_size.withCommas() + 'bytes';
@@ -102,6 +102,15 @@ $(function() {
             if (outputResponse[0].new_data_size < smallest) {
                 smallest = outputResponse[0].new_data_size;
                 mostCompressed = i;
+            }
+            if (isFiles) {
+                var date = new Date();
+                var linkDir = 'output/' + date.getFullYear() + (date.getMonth()+1) + date.getDate();
+                    linkDir += '/' + $('#page-hash').attr('value');
+                var downloadLink = $('<div/>')
+                    .addClass('download-link')
+                    .html('<a href=\"' + linkDir + '/' + outputResponse[i].file + '.js\">Download</a>');
+                outputDetails.append(downloadLink);
             }
         }
     }

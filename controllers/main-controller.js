@@ -102,7 +102,23 @@ app.post('/compress-files', function(req, res) {
                     if (filesReadCount == jsFiles.length) {
                         // we read all the files, now compress and return to user
                         jsCompressor.compressJs(filesContent, chosenCompressor).then(function(compressedJs) {
-                            res.json(compressedJs);
+                            // save compressed files
+
+                            console.log('::' + compressedJs.length + '::');
+
+                            var compressedFileCount = 0;
+                            for (var j=0; j<compressedJs.length; j++) {
+                                console.log(dirName + '/' + compressedJs[j].file);
+                                fs.writeFile(dirName + '/' + compressedJs[j].file + '.js', compressedJs[j].compressed, function(ex) {
+                                    if (ex)
+                                        console.log('error occurred while trying to write file');
+
+                                    compressedFileCount++;
+                                    if (compressedFileCount == compressedJs.length) {
+                                        res.json(compressedJs);
+                                    }
+                                });
+                            }
                         });
                     }
                 });
@@ -112,7 +128,8 @@ app.post('/compress-files', function(req, res) {
 });
 
 app.get('/output/:date/:hash/:file', function(req, res) {
-    var file = __dirname + '/output/' + req.param('date') + '/' + req.param('hash') + '/' + req.param('file');
+    console.log('download request');
+    var file = __dirname + '/../output/' + req.param('date') + '/' + req.param('hash') + '/' + req.param('file');
     res.download(file);
 });
 

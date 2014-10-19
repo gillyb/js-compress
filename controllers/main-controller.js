@@ -127,6 +127,15 @@ app.post('/compress-files', function(req, res) {
     }
 });
 
+app.post('/delete-file', function(req, res) {
+    var filename = req.param('filename');
+    var pageHash = req.param('pageHash');
+    var dirName = _getDirName(pageHash);
+    fs.unlink(dirName + '/' + filename, function() {
+        res.end();
+    });
+});
+
 app.get('/output/:date/:hash/:file', function(req, res) {
     console.log('download request');
     var file = __dirname + '/../output/' + req.param('date') + '/' + req.param('hash') + '/' + req.param('file');

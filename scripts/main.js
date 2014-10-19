@@ -114,4 +114,22 @@ $(function() {
         }
     }
 
+    $(document).on('click', '.file-container .delete', function() {
+        var fileContainer = $(this).parents('.file-container');
+        var filename = fileContainer.find('.filename').data('full-name');
+        var pageHash = $('#page-hash').attr('value');
+        $.ajax({
+            url: '/delete-file',
+            type: 'post',
+            data: {
+                filename: filename,
+                pageHash: pageHash
+            }
+        }).success(function() {
+            fileContainer.remove();
+        }).error(function(ex) {
+            alert('Error deleting file');
+        });
+    });
+
 });

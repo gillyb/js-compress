@@ -132,4 +132,25 @@ $(function() {
         });
     });
 
+    window.clearAll = function() {
+        if (window.confirm('Are you sure you want to delete all files ?')) {
+            var pageHash = $('#page-hash').attr('value');
+            $('.file-container').each(function() {
+                var fileContainer = $(this);
+                $.ajax({
+                    url: '/delete-file',
+                    type: 'post',
+                    data: {
+                        filename: fileContainer.find('.filename').data('full-name'),
+                        pageHash: pageHash
+                    }
+                }).success(function() {
+                    fileContainer.remove();
+                }).error(function() {
+
+                });
+            });
+        }
+    }
+
 });

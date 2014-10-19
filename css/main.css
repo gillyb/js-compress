@@ -25,6 +25,7 @@
     display:inline-block; width:200px; margin-bottom:0; margin-left:10px;
 }
 .drag-files-container .status-bar .files-count-container { display:inline-block; padding-top:10px; }
+.drag-files-container .status-bar .clear-all-area { display:inline-block; width:100px; text-align:right; }
 
 .drag-files-container span.placeholder {
     width:100%; margin-top:80px;

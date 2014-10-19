@@ -72,10 +72,9 @@ $(function() {
     }
 
     function createResultTemplate(compressor, original_size, new_size) {
-
         var wrappingDiv = $('<div/>').addClass('output-result');
 
-        var compressedSize = new_size.withCommas();
+        var compressedSize = new_size.withCommas() + 'bytes';
         var compressedPercent = parseInt(((original_size - new_size) / original_size) * 100);
 
         wrappingDiv.append($('<span/>').addClass('compressor').html(compressor + ' : '));

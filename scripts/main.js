@@ -151,6 +151,53 @@ $(function() {
                 });
             });
         }
+    };
+
+
+
+
+    // COMPRESSOR RADIO BUTTONS //
+
+    var allCompressorsRadios = $('.actions input[type=radio]'),
+        allCompressorsDisplay = $('.actions .check'),
+        compressorYuiRadio = $('#compressor-yui'),
+        compressorYuiDisplay = $('.actions .compressor-yui .check'),
+        compressorYuiLabel = $('.actions label[for=compressor-yui]'),
+        compressorJsMinRadio = $('#compressor-jsmin'),
+        compressorJsMinDisplay = $('.actions .compressor-jsmin .check'),
+        compressorJsMinLabel = $('.actions label[for=compressor-jsmin]'),
+        compressorAllRadio = $('#compressor-all'),
+        compressorAllDisplay = $('.actions .compressor-all .check'),
+        compressorAllLabel = $('.actions label[for=compressor-all]');
+
+    function deSelectAll() {
+        allCompressorsRadios.removeAttr('selected');
+        allCompressorsDisplay.removeClass('selected');
     }
+
+    function chooseYui() {
+        deSelectAll();
+        compressorYuiRadio.attr('selected', 'selected');
+        compressorYuiDisplay.addClass('selected');
+    }
+    function chooseJsMin() {
+        deSelectAll();
+        compressorJsMinRadio.attr('selected', 'selected');
+        compressorJsMinDisplay.addClass('selected');
+    }
+    function chooseAll() {
+        deSelectAll();
+        compressorAllRadio.attr('selected', 'selected');
+        compressorAllDisplay.addClass('selected');
+    }
+
+    compressorYuiDisplay.click(chooseYui);
+    compressorYuiLabel.click(chooseYui);
+
+    compressorJsMinDisplay.click(chooseJsMin);
+    compressorJsMinLabel.click(chooseJsMin);
+
+    compressorAllDisplay.click(chooseAll);
+    compressorAllLabel.click(chooseAll);
 
 });

@@ -45,3 +45,9 @@ div.output-details .title { color:#428bca; font-weight:bold; font-size:16px; bor
 div.output-details .label { padding:0; color:#000; font-weight:bold; font-size:12px; }
 div.output-details .value { color:#000; font-size:12px; }
 div.output-details .compressor { font-weight:bold; margin-top:10px; }
+
+.actions span.compressor-choice label { margin-right:12px; cursor:pointer; }
+.actions span.compressor-choice input[type=radio] { display:none; }
+.actions span.compressor-choice div.compressor-choice { cursor:pointer; display:inline-block; width:18px; height:18px; border:solid 2px #a1a1a1; border-radius:4px; margin:0 4px; vertical-align:middle; }
+.actions span.compressor-choice div.compressor-choice .check { height:11px; width:10px; display:inline-block; border-radius:2px; margin:2px; }
+.actions span.compressor-choice div.compressor-choice .check.selected { background-color:#00bb00; }

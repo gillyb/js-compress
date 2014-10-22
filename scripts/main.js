@@ -41,10 +41,7 @@ $(function() {
             processData: false
         }).success(function(res) {
             //res.compressor, res.prev_data_size, res.new_data_size
-
             displayOutputResults(res);
-
-            $('#js-input').val(res[mostCompressed].compressed);
         }).error(function(e) {
             alert(e);
         });
@@ -112,6 +109,7 @@ $(function() {
                 outputDetails.append(downloadLink);
             }
         }
+        $('#js-input').val(outputResponse[mostCompressed].compressed);
     }
 
     $(document).on('click', '.file-container .delete', function() {
@@ -166,6 +164,9 @@ $(function() {
         compressorJsMinRadio = $('#compressor-jsmin'),
         compressorJsMinDisplay = $('.actions .compressor-jsmin .check'),
         compressorJsMinLabel = $('.actions label[for=compressor-jsmin]'),
+        compressorUglifyRadio = $('#compressor-uglify'),
+        compressorUglifyDisplay = $('.actions .compressor-uglify .check'),
+        compressorUglifyLabel = $('.actions label[for=compressor-uglify]'),
         compressorAllRadio = $('#compressor-all'),
         compressorAllDisplay = $('.actions .compressor-all .check'),
         compressorAllLabel = $('.actions label[for=compressor-all]');
@@ -185,6 +186,11 @@ $(function() {
         compressorJsMinRadio.attr('selected', 'selected');
         compressorJsMinDisplay.addClass('selected');
     }
+    function chooseUglify() {
+        deSelectAll();
+        compressorUglifyRadio.attr('selected', 'selected');
+        compressorUglifyDisplay.addClass('selected');
+    }
     function chooseAll() {
         deSelectAll();
         compressorAllRadio.attr('selected', 'selected');
@@ -196,6 +202,9 @@ $(function() {
 
     compressorJsMinDisplay.click(chooseJsMin);
     compressorJsMinLabel.click(chooseJsMin);
+
+    compressorUglifyDisplay.click(chooseUglify);
+    compressorUglifyLabel.click(chooseUglify);
 
     compressorAllDisplay.click(chooseAll);
     compressorAllLabel.click(chooseAll);

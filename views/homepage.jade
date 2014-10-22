@@ -67,6 +67,11 @@ block body
 						input#compressor-jsmin.compressor-jsmin(type='radio', name='compressor-type', value='jsmin-compressor')
 						label(for='compressor-jsmin') JSMin
 					span.compressor-choice
+						div.compressor-uglify.compressor-choice
+							div.check
+						input#compressor-uglify.compressor-uglify(type='radio', name='compressor-type', value='uglify-compressor')
+						label(for='compressor-uglify') UglifyJS
+					span.compressor-choice
 						div.compressor-all.compressor-choice
 							div.check
 						input#compressor-all.compressor-all(type='radio', name='compressor-type', value='all-compressor', checked='checked')

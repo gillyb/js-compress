@@ -9,7 +9,7 @@ block body
 	div#main
 
 		h1 JS Compress
-		h2 The online javascript compressor
+		h2 The online multiple javascript compression utility
 
 		div.container
 			ul.nav.nav-tabs
@@ -78,5 +78,37 @@ block body
 						label(for='compressor-all') Check them all!
 				button#compress-js-button.btn.btn-primary(type='submit') COMPRESS JS
 
-			div.explanation.
-				Here will be a thorough explanation of how to use this system
+			div.explanation.well.well-sm
+				h3.title(style='margin-top:0;') Javascript Compression
+				| Today most websites compress and minify their javascript resources so their end-users
+				| can enjoy much better peformance.
+				br
+				| Website performance is a crucial part in the succees of any website, and is proven to
+				| improve sales on your site as well.
+
+				h3.title Compressors Used
+				ul
+					li
+						a(href='http://yui.github.io/yuicompressor/', target='_blank') YUI Compressor
+					li
+						a(href='http://www.crockford.com/javascript/jsmin.html', target='_blank') JSMin
+					li
+						a(href='https://github.com/mishoo/UglifyJS', target='_blank') UglifyJS
+					li
+						a(href='https://developers.google.com/closure/compiler/', target='_blank') Google Closure Compiler
+						| (coming soon!)
+
+				h3.title Some Great References
+				ul
+					li
+						a(href='http://engineeredweb.com/blog/why-minify-javascript/', target='_blank') Why minify Javascript?
+					li
+						a(href='http://stevesouders.com/hpws/rules.php', target='_blank') 14 Rules for faster loading web sites by Steve Souders
+					li
+						a(href='https://developer.yahoo.com/performance/rules.html', target='_blank') Yahoo's best practices for speeding up your website
+					li
+						a(href='https://developers.google.com/speed/docs/insights/rules?csw=1', target='_blank') Google's PageSpeed insights rules
+					li
+						a(href='http://apmblog.compuware.com/2010/08/25/top-10-client-side-performance-problems-in-web-2-0/', target='_blank') Top 10 client-side performance problems in Web2.0
+					li
+						a(href='http://www.webpagetest.org/', target='_blank') WebPageTest - The best online client side performance testing utility

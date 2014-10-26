@@ -43,7 +43,7 @@ $(function() {
             //res.compressor, res.prev_data_size, res.new_data_size
             displayOutputResults(res);
         }).error(function(e) {
-            alert(e);
+            alert('An error occurred while trying to compress javascript text.');
         });
     }
 
@@ -64,7 +64,8 @@ $(function() {
         }).success(function(res) {
             displayOutputResults(res, true);
         }).error(function(ex) {
-            alert(JSON.stringify(ex));
+            //alert(JSON.stringify(ex));
+            alert('Sorry, but an error occurred while trying to compress the uploaded javascript files.');
         });
     }
 
@@ -126,7 +127,7 @@ $(function() {
         }).success(function() {
             fileContainer.remove();
         }).error(function(ex) {
-            alert('Error deleting file');
+            alert('Oh, this is embarrassing!\nAn error occurred while trying to delete the uploaded file.');
         });
     });
 
@@ -145,7 +146,7 @@ $(function() {
                 }).success(function() {
                     fileContainer.remove();
                 }).error(function() {
-
+                    alert('Houston, we have a problem!\nAn error occurred while trying to remove all uploaded files.\nJust refresh this page and try again. Sorry.');
                 });
             });
         }

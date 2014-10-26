@@ -3,9 +3,12 @@ h1 { font-size:36px; font-weight:bold; }
 h2 { font-size:28px; margin-top:0; margin-bottom:20px; }
 
 .skyscraper-ad-container { position:absolute; top:0; left:0; width:300px; margin-top:162px; }
+.ad.leaderboard-ad { margin:15px 0; }
 
-#main { width:1170px; margin:0 auto; margin-left:330px; }
+#main { margin:0 auto; margin-left:330px; }
 .container { padding-left:0; }
+
+#main .container { width:auto; margin:0; }
 
 .hidden { display:none; }
 .invisible { visibility: hidden; }

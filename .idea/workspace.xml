@@ -36,8 +36,8 @@
       <file leaf-file-name="main.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/main.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1254">
-              <caret line="13" column="23" selection-start-line="13" selection-start-column="23" selection-end-line="13" selection-end-column="23" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1292">
+              <caret line="7" column="30" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -103,21 +103,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="homepage.jade" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="homepage.jade" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/homepage.jade">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.96" vertical-offset="0" max-vertical-offset="2451">
-              <caret line="21" column="28" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
+            <state vertical-scroll-proportion="0.37392375" vertical-offset="38" max-vertical-offset="2698">
+              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="package.json" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="package.json" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="823">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state vertical-scroll-proportion="-22.392857" vertical-offset="0" max-vertical-offset="760">
+              <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -151,9 +151,9 @@
         <option value="$PROJECT_DIR$/scripts/main.js" />
         <option value="$PROJECT_DIR$/compressors/uglify-compressor.js" />
         <option value="$PROJECT_DIR$/views/layout.jade" />
-        <option value="$PROJECT_DIR$/css/main.css" />
-        <option value="$PROJECT_DIR$/views/homepage.jade" />
         <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/views/homepage.jade" />
+        <option value="$PROJECT_DIR$/css/main.css" />
       </list>
     </option>
   </component>
@@ -310,7 +310,7 @@
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="SearchEverywhereHistoryKey" value="homepage&#9;FILE&#9;file:///Users/gilly/dev/js-compress/views/homepage.jade&#10;main.css&#9;FILE&#9;file:///Users/gilly/dev/js-compress/css/main.css&#10;main.&#9;FILE&#9;file:///Users/gilly/dev/js-compress/css/main.css&#10;layout&#9;FILE&#9;file:///Users/gilly/dev/js-compress/views/layout.jade&#10;main.js&#9;FILE&#9;file:///Users/gilly/dev/js-compress/scripts/main.js&#10;main&#9;FILE&#9;file:///Users/gilly/dev/js-compress/css/main.css&#10;upload&#9;FILE&#9;file:///Users/gilly/dev/js-compress/scripts/file-upload.js&#10;jsmin&#9;FILE&#9;file:///Users/gilly/dev/js-compress/compressors/jsmin-compressor.js&#10;yui-com&#9;FILE&#9;file:///Users/gilly/dev/js-compress/compressors/yui-compressor.js&#10;home&#9;FILE&#9;file:///Users/gilly/dev/js-compress/views/homepage.jade&#10;file-&#9;FILE&#9;file:///Users/gilly/dev/js-compress/scripts/file-upload.js&#10;file&#9;FILE&#9;file:///Users/gilly/dev/js-compress/scripts/file-upload.js&#10;init&#9;FILE&#9;file:///Users/gilly/dev/js-compress/init.js&#10;util&#9;FILE&#9;file:///Users/gilly/dev/js-compress/scripts/utils.js&#10;&#9;FILE&#9;file:///Users/gilly/dev/js-compress/css/main.css&#10;file-up&#9;FILE&#9;file:///Users/gilly/dev/js-compress/scripts/file-upload.js&#10;lay&#9;FILE&#9;file:///Users/gilly/dev/js-compress/views/layout.jade&#10;main.cs&#9;FILE&#9;file:///Users/gilly/dev/js-compress/css/main.css&#10;index&#9;FILE&#9;file:///Users/gilly/dev/js-compress/node_modules/multiparty/index.js&#10;compre&#9;FILE&#9;file:///Users/gilly/dev/js-compress/compressor.js&#10;_stream&#9;FILE&#9;file:///Users/gilly/dev/js-compress/node_modules/multiparty/node_modules/readable-stream/lib/_stream_writable.js&#10;multip/&#9;null&#9;null&#10;con&#9;FILE&#9;file:///Users/gilly/dev/js-compress/controllers/main-controller.js&#10;compressor&#9;FILE&#9;file:///Users/gilly/dev/js-compress/compressor.js&#10;test&#9;FILE&#9;file:///Users/gilly/dev/js-compress/test-compress.js&#10;init.&#9;FILE&#9;file:///Users/gilly/dev/js-compress/init.js" />
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///Users/gilly/dev/js-compress/css/main.css&#10;main&#9;FILE&#9;file:///Users/gilly/dev/js-compress/css/main.css&#10;homepage&#9;FILE&#9;file:///Users/gilly/dev/js-compress/views/homepage.jade&#10;main.css&#9;FILE&#9;file:///Users/gilly/dev/js-compress/css/main.css&#10;main.&#9;FILE&#9;file:///Users/gilly/dev/js-compress/css/main.css&#10;layout&#9;FILE&#9;file:///Users/gilly/dev/js-compress/views/layout.jade&#10;main.js&#9;FILE&#9;file:///Users/gilly/dev/js-compress/scripts/main.js&#10;upload&#9;FILE&#9;file:///Users/gilly/dev/js-compress/scripts/file-upload.js&#10;jsmin&#9;FILE&#9;file:///Users/gilly/dev/js-compress/compressors/jsmin-compressor.js&#10;yui-com&#9;FILE&#9;file:///Users/gilly/dev/js-compress/compressors/yui-compressor.js&#10;home&#9;FILE&#9;file:///Users/gilly/dev/js-compress/views/homepage.jade&#10;file-&#9;FILE&#9;file:///Users/gilly/dev/js-compress/scripts/file-upload.js&#10;file&#9;FILE&#9;file:///Users/gilly/dev/js-compress/scripts/file-upload.js&#10;init&#9;FILE&#9;file:///Users/gilly/dev/js-compress/init.js&#10;util&#9;FILE&#9;file:///Users/gilly/dev/js-compress/scripts/utils.js&#10;file-up&#9;FILE&#9;file:///Users/gilly/dev/js-compress/scripts/file-upload.js&#10;lay&#9;FILE&#9;file:///Users/gilly/dev/js-compress/views/layout.jade&#10;main.cs&#9;FILE&#9;file:///Users/gilly/dev/js-compress/css/main.css&#10;index&#9;FILE&#9;file:///Users/gilly/dev/js-compress/node_modules/multiparty/index.js&#10;compre&#9;FILE&#9;file:///Users/gilly/dev/js-compress/compressor.js&#10;_stream&#9;FILE&#9;file:///Users/gilly/dev/js-compress/node_modules/multiparty/node_modules/readable-stream/lib/_stream_writable.js&#10;multip/&#9;null&#9;null&#10;con&#9;FILE&#9;file:///Users/gilly/dev/js-compress/controllers/main-controller.js&#10;compressor&#9;FILE&#9;file:///Users/gilly/dev/js-compress/compressor.js&#10;test&#9;FILE&#9;file:///Users/gilly/dev/js-compress/test-compress.js&#10;init.&#9;FILE&#9;file:///Users/gilly/dev/js-compress/init.js" />
     <property name="options.lastSelected" value="preferences.sourceCode.Jade" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
@@ -777,26 +777,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-22.392857" vertical-offset="0" max-vertical-offset="760">
+          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/css/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1254">
-          <caret line="13" column="23" selection-start-line="13" selection-start-column="23" selection-end-line="13" selection-end-column="23" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1292">
+          <caret line="7" column="30" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/homepage.jade">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.96" vertical-offset="0" max-vertical-offset="2451">
-          <caret line="21" column="28" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="823">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.37392375" vertical-offset="38" max-vertical-offset="2698">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding />
         </state>
       </provider>

@@ -2,7 +2,9 @@
 h1 { font-size:36px; font-weight:bold; }
 h2 { font-size:28px; margin-top:0; margin-bottom:20px; }
 
-#main { width:1000px; margin:0 auto; }
+.skyscraper-ad-container { position:absolute; top:0; left:0; width:300px; margin-top:162px; }
+
+#main { width:1170px; margin:0 auto; margin-left:330px; }
 .container { padding-left:0; }
 
 .hidden { display:none; }

@@ -1,0 +1,34 @@
+{
+  "name": "js-compress",
+  "version": "1.0.0",
+  "description": "The online Javascript compression utility",
+  "main": "init.js",
+  "dependencies": {
+    "body-parser": "1.8.2",
+    "express": "4.9.0",
+    "method-override": "2.2.0",
+    "jsmin": "1.0.1",
+    "multiparty": "3.3.2",
+    "q": "1.0.1",
+    "uglify-js": "2.4.15",
+    "yuicompressor": "2.4.8",
+    "jade": "1.6.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gillyb/js-compress.git"
+  },
+  "author": "Gilly Barr",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gillyb/js-compress/issues"
+  },
+  "homepage": "http://jscompress.com",
+  "engines": {
+      "node": "0.10.31"
+  }
+}

@@ -8,7 +8,7 @@
 .nav-tabs .actions { margin-top:15px; }
 
 .drag-files-container {
-    height:250px; width:840px;
+    height:300px; width:840px;
     margin-right:10px; border:solid 2px #a8a8a8;
     display:inline-block; position:relative;
 }
@@ -38,13 +38,14 @@
 .drag-files-container .filename { position:absolute; width:100%; bottom:0; font-size:12px; }
 .drag-files-container .delete { position:absolute; top:0; right:0; cursor:pointer; background-color:red; padding:3px; border-radius:10px; color:#fff; font-weight:bold; font-size:11px; width:18px; text-align:center; }
 
-textarea.js-input { width:840px; height:250px; margin-right:10px; }
+textarea.js-input { width:840px; height:300px; margin-right:10px; }
 
-div.output-details { display:inline-block; width:290px; height:250px; background-color:#efefef; vertical-align:top; padding:10px; }
+div.output-details { display:inline-block; width:290px; height:300px; background-color:#efefef; vertical-align:top; padding:10px; }
 div.output-details .title { color:#428bca; font-weight:bold; font-size:16px; border-bottom:solid 1px #428bca; margin-bottom:10px; }
 div.output-details .label { padding:0; color:#000; font-weight:bold; font-size:12px; }
 div.output-details .value { color:#000; font-size:12px; }
 div.output-details .compressor { font-weight:bold; margin-top:10px; }
+div.output-details .output-result { margin-top:10px; }
 
 .actions span.compressor-choice label { margin-right:12px; cursor:pointer; }
 .actions span.compressor-choice input[type=radio] { display:none; }

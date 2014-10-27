@@ -58,9 +58,12 @@ div.output-details .output-result { margin-top:10px; }
 
 .actions { margin-top:6px; }
 .actions span.compressor-choice label { margin-right:12px; cursor:pointer; }
+.actions span.compressor-choice label[for=compressor-all] { margin-right:6px; verical-align:bottom; }
 .actions span.compressor-choice input[type=radio] { display:none; }
 .actions span.compressor-choice div.compressor-choice { cursor:pointer; display:inline-block; width:18px; height:18px; border:solid 2px #a1a1a1; border-radius:4px; margin:0 4px; vertical-align:middle; }
 .actions span.compressor-choice div.compressor-choice .check { height:11px; width:10px; display:inline-block; border-radius:2px; margin:2px; }
 .actions span.compressor-choice div.compressor-choice .check.selected { background-color:#00bb00; }
 
 .explanation.well { margin-top:20px; }
+
+.info-tooltip { background-color:#428bca; color:#fff; border-radius:20px; width:16px; height:16px; display:inline-block; text-align:center; font-size:12px; }

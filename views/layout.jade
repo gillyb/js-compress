@@ -20,4 +20,8 @@ html
 		block body
 
 		script(src='file-upload.js?v=1')
+		script(type='text/javascript').
+			$(function() {
+				$('.info-tooltip').tooltip();
+			});
 		include googleAnalytics

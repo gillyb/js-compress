@@ -26,7 +26,7 @@ app.set('views', __dirname + '/views');
 require('./controllers/main-controller.js');
 
 
-app.listen(__port__, function() {
+app.listen(process.env.PORT || __port__, function() {
 	console.log('listening on port : ' + __port__);
 }).on('error', function(ex) {
 	console.log('server error : ' + ex);

@@ -19,7 +19,7 @@ block body
 
 	div#main
 
-		h1 JS Compress
+		h1 Compress JS
 		h2 The online multiple javascript compression utility
 
 		div.container
@@ -30,10 +30,15 @@ block body
 					a(href='#') Text
 
 			div.files-tab-container
-				div.drag-files-container#holder
-					span.placeholder
-						| Drag files here to upload...
-						div.small Files will be compressed and combined to a single file in the order they appear here
+				div.output-details
+					div.title Output Details
+					div.output
+
+				div.drag-files-container
+					div#holder
+						span.placeholder
+							| Drag files here to upload...
+							div.small Files will be compressed and combined to a single file in the order they appear here
 					p#upload.hidden
 						label
 							| Drag & drop not supported, but you can still upload via this input field:
@@ -52,10 +57,6 @@ block body
 							span.files-count 0
 						div.clear-all-area
 							a.clear-all(href='#', onclick='clearAll()') Clear
-
-				div.output-details
-					div.title Output Details
-					div.output
 
 			div.text-tab-container.hidden
 				textarea#js-input.js-input(name='js-input', placeholder='Paste your javascript code here...')

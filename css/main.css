@@ -5,7 +5,7 @@ h2 { font-size:28px; margin-top:0; margin-bottom:20px; }
 .skyscraper-ad-container { position:absolute; top:0; left:0; width:300px; margin-top:162px; }
 .ad.leaderboard-ad { margin:15px 0; }
 
-#main { margin:0 auto; margin-left:330px; }
+#main { margin:0 auto; margin-left:330px; min-width:915px; }
 .container { padding-left:0; }
 
 #main .container { width:auto; margin:0; }
@@ -16,10 +16,12 @@ h2 { font-size:28px; margin-top:0; margin-bottom:20px; }
 .nav-tabs { margin-bottom:15px; }
 .nav-tabs .actions { margin-top:15px; }
 
+.files-tab-container { position:relative; }
+
+#holder { height:256px; overflow-y:scroll; }
 .drag-files-container {
-    height:300px; width:840px;
-    margin-right:10px; border:solid 2px #a8a8a8;
-    display:inline-block; position:relative;
+    height:300px; margin-right:310px; border:solid 2px #a8a8a8;
+    display:block; position:relative;
 }
 .drag-files-container .status-bar {
     position:absolute; bottom:0; width:100%;
@@ -49,7 +51,7 @@ h2 { font-size:28px; margin-top:0; margin-bottom:20px; }
 
 textarea.js-input { width:840px; height:300px; margin-right:10px; }
 
-div.output-details { display:inline-block; width:290px; height:300px; background-color:#efefef; vertical-align:top; padding:10px; }
+div.output-details { display:inline-block; width:290px; height:300px; background-color:#efefef; vertical-align:top; padding:10px; position:absolute; right:0; }
 div.output-details .title { color:#428bca; font-weight:bold; font-size:16px; border-bottom:solid 1px #428bca; margin-bottom:10px; }
 div.output-details .label { padding:0; color:#000; font-weight:bold; font-size:12px; }
 div.output-details .value { color:#000; font-size:12px; }

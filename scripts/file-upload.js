@@ -62,7 +62,16 @@ function previewfile(file) {
 }
 
 function readfiles(files) {
-    // TODO: make sure files are only *.js
+    // filter only js files
+    var filesCount = files.length;
+    files = $.grep(files, function(file) {
+        return file.name.split('.').pop() == 'js';
+    });
+
+    if (files.length == 0 || filesCount > files.length) {
+        alert('You can only compress js files (ending with *.js)');
+        return;
+    }
 
     var formData = tests.formdata ? new FormData() : null;
     for (var i = 0; i < files.length; i++) {

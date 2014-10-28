@@ -37,9 +37,7 @@ app.post('/compress-text', function(req, res) {
             //console.log(JSON.stringify(compressedData));
             res.json(compressedData);
         });
-
     });
-
 });
 
 app.post('/upload', function(req, res) {

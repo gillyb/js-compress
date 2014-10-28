@@ -11,8 +11,7 @@ module.exports = {
         var deferred = q.defer();
         compressor.compress(js, {
             charset: 'utf8',
-            type: 'js',
-            nomunge: true // don't obfuscate, only minify
+            type: 'js'
         },
         function (err, data, extra) {
             deferred.resolve(data);

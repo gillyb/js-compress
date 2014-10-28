@@ -9,8 +9,12 @@ module.exports = {
 
     compressJs: function(js) {
         var deferred = q.defer();
-        var out = uglify.minify(js, {fromString:true});
-        deferred.resolve(out.code);
+
+        var parsed = uglify.parser.parse(js);
+        parsed = uglify.uglify.ast_mangle(parsed);
+        var out = uglify.uglify.gen_code(parsed);
+
+        deferred.resolve(out);
         return deferred.promise;
     },
     compressCss: function(css) {

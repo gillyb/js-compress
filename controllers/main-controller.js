@@ -59,7 +59,8 @@ app.post('/upload', function(req, res) {
             fs.mkdirSync(dirName);
         }
 
-        // copy the file
+        // copy the files
+        var copyCount = 0;
         for (var i=0; i<files.file.length; i++) {
             var tempFilePath = files.file[i].path;
             var originalFilename = files.file[i].originalFilename;
@@ -74,7 +75,10 @@ app.post('/upload', function(req, res) {
                         fs.unlink(tempFilePath, function(err) {
                             if (err)
                                 console.log('error deleting file : ' + err);
-                            //console.log('file deleted');
+
+                            copyCount++;
+                            if (copyCount == files.length)
+                                res.end();
                         });
                     }));
         }

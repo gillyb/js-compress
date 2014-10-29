@@ -14,8 +14,11 @@ module.exports = {
             type: 'js'
         },
         function (err, data, extra) {
-            if (err)
+            if (err) {
                 console.log('YUICompressor :: an error occurred\n' + JSON.stringify(err));
+                deferred.resolve({});
+                return;
+            }
 //            if (extra)
 //                console.log('YUICompressor :: extra = ' + extra);
 

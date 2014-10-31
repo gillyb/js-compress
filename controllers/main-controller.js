@@ -78,7 +78,7 @@ app.post('/upload', function(req, res) {
 
                             copyCount++;
                             if (copyCount == files.length)
-                                res.end();
+                                res.json({});
                         });
                     }));
         }

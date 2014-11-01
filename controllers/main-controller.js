@@ -60,10 +60,11 @@ app.post('/upload', function(req, res) {
         }
 
         // copy the files
+        var uploadedFiles = files.file;
         var copyCount = 0;
-        for (var i=0; i<files.file.length; i++) {
-            var tempFilePath = files.file[i].path;
-            var originalFilename = files.file[i].originalFilename;
+        for (var i=0; i<uploadedFiles.length; i++) {
+            var tempFilePath = uploadedFiles[i].path;
+            var originalFilename = uploadedFiles[i].originalFilename;
 
             fs.createReadStream(tempFilePath)
                 .pipe(fs.createWriteStream(dirName + '/' + originalFilename)
@@ -77,7 +78,7 @@ app.post('/upload', function(req, res) {
                                 console.log('error deleting file : ' + err);
 
                             copyCount++;
-                            if (copyCount == files.length)
+                            if (copyCount == uploadedFiles.length)
                                 res.json({});
                         });
                     }));

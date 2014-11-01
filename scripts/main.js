@@ -6,7 +6,8 @@ $(function() {
         textTabContainer = $('.text-tab-container'),
         filesTabContainer = $('.files-tab-container'),
         compressButton = $('#compress-js-button'),
-        outputDetails = $('.output-details .output');
+        outputDetails = $('.output-details .output'),
+        spinner = $('.spin');
 
     $('.files-tab').click(function() {
         textTabContainer.addClass('hidden');
@@ -166,6 +167,9 @@ $(function() {
                     alert('Houston, we have a problem!\nAn error occurred while trying to remove all uploaded files.\nJust refresh this page and try again. Sorry.');
                 });
             });
+
+            outputDetails.html('');
+            $('.files-count').html('0');
         }
     };
 

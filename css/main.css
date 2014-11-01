@@ -71,3 +71,30 @@ div.output-details .output-result { margin-top:10px; }
 
 .info-tooltip { background-color:#428bca; color:#fff; border-radius:20px; width:16px; height:16px; display:inline-block; text-align:center; font-size:12px; }
 .footer { background-color:#efefef; padding:20px; border-top:solid 1px #888; margin-top:30px; }
+
+
+/* Spinning Effect */
+.spin {
+    -webkit-animation: spinner 2s infinite linear;
+    animation: spinner 2s infinite linear;
+}
+@-webkit-keyframes spinner {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
+    }
+}
+@keyframes spinner {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
+    }
+}

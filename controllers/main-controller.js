@@ -74,8 +74,10 @@ app.post('/upload', function(req, res) {
                         //console.log('file copied');
 
                         fs.unlink(tempFilePath, function(err) {
-                            if (err)
-                                console.log('error deleting file : ' + err);
+                            if (err) {
+                                // Fail gracefully, and just shut up!
+                                // console.log('error deleting file : ' + err);
+                            }
 
                             copyCount++;
                             if (copyCount == uploadedFiles.length)

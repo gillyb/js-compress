@@ -28,10 +28,21 @@ $(function() {
             compressJsFiles();
     });
 
+    function showSpinner() {
+        compressButton.addClass('disabled').attr('disabled', 'disabled');
+        spinner.removeClass('hidden');
+    }
+    function hideSpinner() {
+        compressButton.removeClass('disabled').removeAttr('disabled');
+        spinner.addClass('hidden');
+    }
+
     function compressJsText() {
         var formData = new FormData();
         formData.append('jsInput', $('#js-input').val());
         formData.append('jsCompressor', $('input[name=compressor-type]:checked').val());
+
+        showSpinner();
 
         $.ajax({
             url: '/compress-text',
@@ -42,8 +53,10 @@ $(function() {
         }).success(function(res) {
             //res.compressor, res.prev_data_size, res.new_data_size
             displayOutputResults(res);
+            hideSpinner();
         }).error(function(e) {
             alert('An error occurred while trying to compress javascript text.');
+            hideSpinner();
         });
     }
 
@@ -52,6 +65,8 @@ $(function() {
         filesTabContainer.find('.file-container .filename').each(function() {
             jsFiles.push($(this).data('full-name'));
         });
+
+        showSpinner();
 
         $.ajax({
             type: 'POST',
@@ -63,9 +78,11 @@ $(function() {
             }
         }).success(function(res) {
             displayOutputResults(res, true);
+            hideSpinner();
         }).error(function(ex) {
             //alert(JSON.stringify(ex));
             alert('Sorry, but an error occurred while trying to compress the uploaded javascript files.');
+            hideSpinner();
         });
     }
 

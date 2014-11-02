@@ -51,6 +51,8 @@ function previewfile(file) {
                 holder.append(fileContainer);
 
                 $('.status-bar .files-count').html($('#holder .file-container').length);
+
+                checkCompressable();
             };
         })(file.name);
 

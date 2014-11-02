@@ -144,8 +144,10 @@ $(function() {
             }
         }).success(function() {
             fileContainer.remove();
+            checkCompressable();
         }).error(function(ex) {
             alert('Oh, this is embarrassing!\nAn error occurred while trying to delete the uploaded file.');
+            checkCompressable();
         });
     });
 
@@ -171,10 +173,33 @@ $(function() {
             outputDetails.html('');
             $('.files-count').html('0');
         }
+
+        checkCompressable();
     };
 
+    window.checkCompressable = function() {
+        if (filesTab.hasClass('active')) {
+            if ($('.file-container').length == 0) {
+                compressButton.addClass('disabled').attr('disabled', 'disabled');
+                return;
+            }
 
+            compressButton.removeClass('disabled').removeAttr('disabled');
+            return;
+        }
 
+        if (textTab.hasClass('active')) {
+            if ($('#js-input').val().length == 0) {
+                compressButton.addClass('disabled').attr('disabled', 'disabled');
+                return;
+            }
+
+            compressButton.removeClass('disabled').removeAttr('disabled');
+        }
+    };
+    checkCompressable();
+
+    $('#js-input').on('change keyup paste', checkCompressable);
 
     // COMPRESSOR RADIO BUTTONS //
 

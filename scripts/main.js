@@ -214,6 +214,9 @@ $(function() {
         compressorUglifyRadio = $('#compressor-uglify'),
         compressorUglifyDisplay = $('.actions .compressor-uglify .check'),
         compressorUglifyLabel = $('.actions label[for=compressor-uglify]'),
+        compressorClosureRadio = $('#compressor-closure'),
+        compressorClosureDisplay = $('.actions .compressor-closure .check'),
+        compressorClosureLabel = $('.actions label[for=compressor-closure]'),
         compressorAllRadio = $('#compressor-all'),
         compressorAllDisplay = $('.actions .compressor-all .check'),
         compressorAllLabel = $('.actions label[for=compressor-all]');
@@ -238,6 +241,11 @@ $(function() {
         compressorUglifyRadio.attr('selected', 'selected');
         compressorUglifyDisplay.addClass('selected');
     }
+    function chooseClosure() {
+        deSelectAll();
+        compressorClosureRadio.attr('selected', 'selected');
+        compressorClosureDisplay.addClass('selected');
+    }
     function chooseAll() {
         deSelectAll();
         compressorAllRadio.attr('selected', 'selected');
@@ -252,6 +260,9 @@ $(function() {
 
     compressorUglifyDisplay.click(chooseUglify);
     compressorUglifyLabel.click(chooseUglify);
+
+    compressorClosureDisplay.click(chooseClosure);
+    compressorClosureLabel.click(chooseClosure);
 
     compressorAllDisplay.click(chooseAll);
     compressorAllLabel.click(chooseAll);

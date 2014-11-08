@@ -7,6 +7,7 @@ var multiparty = require('multiparty');
 var yuiCompressor = require('../compressors/yui-compressor.js');
 var jsMinCompressor = require('../compressors/jsmin-compressor.js');
 var uglifyCompressor = require('../compressors/uglify-compressor.js');
+var closureCompressor = require('../compressors/closure-compiler.js');
 
 var jsCompressor = require('../compressor.js');
 
@@ -173,7 +174,9 @@ var _getChosenCompressor = function(compressors) {
         chosenCompressor = jsMinCompressor;
     else if (compressors == 'uglify-compressor')
         chosenCompressor = uglifyCompressor;
+    else if (compressors == 'closure-compressor')
+        chosenCompressor = closureCompressor;
     else if (compressors == 'all-compressor')
-        chosenCompressor = [yuiCompressor, jsMinCompressor, uglifyCompressor];
+        chosenCompressor = [yuiCompressor, jsMinCompressor, uglifyCompressor, closureCompressor];
     return chosenCompressor;
 };

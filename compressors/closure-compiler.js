@@ -15,13 +15,19 @@ module.exports = {
         function (err, data, extra) {
             if (err) {
                 console.log('Closure Compiler :: an error occurred\n' + JSON.stringify(err));
-                deferred.resolve({});
+                deferred.resolve({
+                    compressed: '',
+                    status: 'ERROR'
+                });
                 return;
             }
 //            if (extra)
 //                console.log('Closure Compiler :: extra = ' + extra);
 
-            deferred.resolve(data);
+            deferred.resolve({
+                compressed: data,
+                status: 'OK'
+            });
         });
         return deferred.promise;
     },

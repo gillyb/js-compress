@@ -16,14 +16,21 @@ module.exports = {
         function (err, data, extra) {
             if (err) {
                 console.log('YUICompressor :: an error occurred\n' + JSON.stringify(err));
-                deferred.resolve({});
+                deferred.resolve({
+                    compressed: '',
+                    status: 'ERROR'
+                });
                 return;
             }
 //            if (extra)
 //                console.log('YUICompressor :: extra = ' + extra);
 
-            deferred.resolve(data);
+            deferred.resolve({
+                compressed: data,
+                status: 'OK'
+            });
         });
+
         return deferred.promise;
     },
     compressCss: function(css) {

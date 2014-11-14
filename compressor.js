@@ -11,7 +11,14 @@ module.exports = {
     // 	prev_data_size: 132001,
     // 	new_data_size: 14302,
     // 	compressed: '<js compressed>'
+    //  status: 'OK', 'ERROR'
     // }, {...}]
+    //
+    // Each compressor returns data in this form :
+    // {
+    //  compressed: '...<compressed_js>...',
+    //  status: 'OK'/'ERROR'
+    // }
     compressJs: function(data, compressors) {
         var deferred = q.defer();
 
@@ -34,13 +41,22 @@ module.exports = {
             });
 
             var bigPromise = q.all(promises).then(function(results) {
-                var jsCombined = results.join();
+                var error = false;
+                var jsCombined = '';
+                for (var i=0; i<results.length; i++) {
+                    if (results[i].status == 'OK')
+                        jsCombined += results[i].compressed;
+                    else
+                        error = true;
+                }
+
                 compressedData.push({
                     compressor: compressor.name,
                     file: compressor.file,
                     prev_data_size: originalJsSize,
                     new_data_size: jsCombined.length,
-                    compressed: jsCombined
+                    compressed: jsCombined,
+                    status: error ? 'ERROR' : 'OK'
                 });
             });
             bigPromises.push(bigPromise);

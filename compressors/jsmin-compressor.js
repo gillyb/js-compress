@@ -10,7 +10,11 @@ module.exports = {
     compressJs: function(js) {
         var deferred = q.defer();
         var out = jsmin(js);
-        deferred.resolve(out);
+        // TODO: check what happens when an error occurs ?
+        deferred.resolve({
+            compressed: out,
+            status: 'OK'
+        });
         return deferred.promise;
     },
     compressCss: function(css) {

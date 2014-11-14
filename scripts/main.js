@@ -87,18 +87,31 @@ $(function() {
         });
     }
 
-    function createResultTemplate(compressor, original_size, new_size) {
-        var wrappingDiv = $('<div/>').addClass('output-result');
+    function createResultTemplate(outputResponse) {
+        if (outputResponse.status == 'OK') {
+            var compressor = outputResponse.compressor,
+                original_size = outputResponse.prev_data_size,
+                new_size = outputResponse.new_data_size;
 
-        var compressedSize = new_size.withCommas() + 'bytes';
-        var compressedPercent = parseInt(((original_size - new_size) / original_size) * 100);
+            var wrappingDiv = $('<div/>').addClass('output-result');
 
-        wrappingDiv.append($('<span/>').addClass('compressor').html(compressor + ' : '));
-        wrappingDiv.append($('<span/>')
-            .addClass('new-size')
-            .html(compressedSize + ' (' + compressedPercent + '%)'));
+            var compressedSize = new_size.withCommas() + 'bytes';
+            var compressedPercent = parseInt(((original_size - new_size) / original_size) * 100);
 
-        return wrappingDiv;
+            wrappingDiv.append($('<span/>').addClass('compressor').html(compressor + ' : '));
+            wrappingDiv.append($('<span/>')
+                .addClass('new-size')
+                .html(compressedSize + ' (' + compressedPercent + '%)'));
+
+            return wrappingDiv;
+        }
+        else {
+            var compressor = outputResponse.compressor;
+            var wrappingDiv = $('<div/>').addClass('output-result');
+            wrappingDiv.append($('<span/>').addClass('compressor').html(compressor + ' : '));
+            wrappingDiv.append($('<span/>').addClass('error').html('Error Compressing'));
+            return wrappingDiv;
+        }
     }
 
     function displayOutputResults(outputResponse, isFiles) {
@@ -113,7 +126,7 @@ $(function() {
         var mostCompressed = 0;
         var smallest = outputResponse[0].prev_data_size;
         for (var i=0; i<outputResponse.length; i++) {
-            outputDetails.append(createResultTemplate(outputResponse[i].compressor, outputResponse[i].prev_data_size, outputResponse[i].new_data_size));
+            outputDetails.append(createResultTemplate(outputResponse[i]));
             if (outputResponse[0].new_data_size < smallest) {
                 smallest = outputResponse[0].new_data_size;
                 mostCompressed = i;

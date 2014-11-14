@@ -52,6 +52,7 @@ app.post('/upload', function(req, res) {
         //console.log('fields : ' + JSON.stringify(fields));
         //console.log('files : ' + JSON.stringify(files));
 
+        // create the directory if it doesn't exist yet
         var dirName = _getDirName(fields['page-hash']);
         if (!fs.existsSync(dirName)) {
             var dateDir = dirName.split('/')[0] + '/' + dirName.split('/')[1];
@@ -60,7 +61,7 @@ app.post('/upload', function(req, res) {
             fs.mkdirSync(dirName);
         }
 
-        // copy the files
+        // copy the files to the new directory
         var uploadedFiles = files.file;
         var copyCount = 0;
         for (var i=0; i<uploadedFiles.length; i++) {

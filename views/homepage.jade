@@ -4,7 +4,8 @@ block head
 
 block body
 
-	inpupt#page-hash(type='hidden', value='#{pageHash}')
+	input#page-hash(type='hidden', value='#{pageHash}')
+	input#test(type='hidden', value='#{perfArticles}')
 
 	div.skyscraper-ad-container.
 		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -143,3 +144,9 @@ block body
 						a(href='http://apmblog.compuware.com/2010/08/25/top-10-client-side-performance-problems-in-web-2-0/', target='_blank') Top 10 client-side performance problems in Web2.0
 					li
 						a(href='http://www.webpagetest.org/', target='_blank') WebPageTest - The best online client side performance testing utility
+
+				h3.title New performance articles
+				ul
+					- for (var i=0; i<perfArticles.articles.length; i++)
+						li
+							a(href='#{perfArticles.articles[i].link}', target='_blank') #{perfArticles.articles[i].title}

@@ -3,6 +3,7 @@ var fs = require('fs');
 var arrayUtils = require('../scripts/array-utils.js');
 var util = require('util');
 var multiparty = require('multiparty');
+var perfArticles = require('../scripts/perf-articles.js');
 
 var yuiCompressor = require('../compressors/yui-compressor.js');
 var jsMinCompressor = require('../compressors/jsmin-compressor.js');
@@ -12,8 +13,11 @@ var closureCompressor = require('../compressors/closure-compiler.js');
 var jsCompressor = require('../compressor.js');
 
 app.get('/', function(req, res) {
-    res.render('homepage', {
-        pageHash: arrayUtils.createHash()
+    perfArticles.getPerfArticles().then(function(articles) {
+        res.render('homepage', {
+            pageHash: arrayUtils.createHash(),
+            perfArticles: articles
+        });
     });
 });
 

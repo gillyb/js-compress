@@ -13,7 +13,8 @@
     "uglify-js": "1.3.5",
     "yuicompressor": "2.4.8",
     "closure-compiler": "0.2.6",
-    "jade": "1.6.0"
+    "jade": "1.6.0",
+    "jsdom": "1.4.0"
   },
   "devDependencies": {},
   "scripts": {
